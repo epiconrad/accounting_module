@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_from: 2015-04-20
+  date_to: 2015-04-20
+  client: MyString
+  branch: MyString
+  bus_unit: MyString
+  status: MyString
+
+two:
+  date_from: 2015-04-20
+  date_to: 2015-04-20
+  client: MyString
+  branch: MyString
+  bus_unit: MyString
+  status: MyString
