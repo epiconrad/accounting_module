@@ -1,33 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Date from:</strong>
+  <strong>Date From     : </strong>
   <%= @cashadvance.date_from %>
 </p>
 
 <p>
-  <strong>Date to:</strong>
+  <strong>Date To       : </strong>
   <%= @cashadvance.date_to %>
 </p>
 
 <p>
-  <strong>Client:</strong>
+  <strong>Client        : </strong>
   <%= @cashadvance.client %>
 </p>
 
 <p>
-  <strong>Branch:</strong>
+  <strong>Branch        : </strong>
   <%= @cashadvance.branch %>
 </p>
 
 <p>
-  <strong>Bus unit:</strong>
+  <strong>Business Unit : </strong>
   <%= @cashadvance.bus_unit %>
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @cashadvance.status %>
+  <strong>Status        : </strong>
+  <%= 'Pending' %>
 </p>
 
 <%= link_to 'Edit', edit_cashadvance_path(@cashadvance) %> |

@@ -1,41 +1,70 @@
-<%= form_for(@cashadvance) do |f| %>
-  <% if @cashadvance.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cashadvance.errors.count, "error") %> prohibited this cashadvance from being saved:</h2>
+<head>
+	<meta charset="utf-8">
+  <title>jQuery UI Datepicker - Select a Date Range</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+	<%= form_for(@cashadvance) do |f| %>
+	<% if @cashadvance.errors.any? %>
+	<div id="error_explanation">
+	  <h2><%= pluralize(@cashadvance.errors.count, "error") %> prohibited this cashadvance from being saved:</h2>
 
-      <ul>
-      <% @cashadvance.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	  <ul>
+	  <% @cashadvance.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	  <% end %>
+	  </ul>
+	</div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :date_from %><br>
-    <%= f.date_select :date_from %>
-  </div>
-  <div class="field">
-    <%= f.label :date_to %><br>
-    <%= f.date_select :date_to %>
-  </div>
-  <div class="field">
-    <%= f.label :client %><br>
-    <%= f.text_field :client %>
-  </div>
-  <div class="field">
-    <%= f.label :branch %><br>
-    <%= f.text_field :branch %>
-  </div>
-  <div class="field">
-    <%= f.label :bus_unit %><br>
-    <%= f.text_field :bus_unit %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<table>
+	<tr>
+		<td><%= f.label "DATE FROM" %></td>
+		<td><%= f.text_field :date_from %></td>
+	</tr>
+	<tr>
+		<td><%= f.label "DATE TO" %></td>
+		<td><%= f.text_field :date_to%></td>
+	</tr>
+	<tr>
+		<td><%= f.label "CLIENT" %></td>
+		<td><%= f.text_field :client, :value => 'Client' %></td>
+	</tr>
+	<tr>
+		<td><%= f.label "BRANCH" %></td>
+		<td><%= f.text_field :branch, :value => 'Branch' %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :"BUSINESS UNIT" %></td>
+		<td><%= f.text_field :bus_unit, :value => 'Business Unit'%></td>
+	</tr>
+	</table>
+	<%= f.hidden_field :status, :value => "Pending"%>
+	<div class="actions">
+	<%= f.submit :value, :value => "REQUEST"%>
+	</div>
+	<% end %>
+</body>

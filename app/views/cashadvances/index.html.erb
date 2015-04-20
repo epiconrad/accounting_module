@@ -1,13 +1,13 @@
-<h1>Listing cashadvances</h1>
+<h1>Listing All Cash Advances</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Date from</th>
-      <th>Date to</th>
+      <th>Date From</th>
+      <th>Date To</th>
       <th>Client</th>
       <th>Branch</th>
-      <th>Bus unit</th>
+      <th>Business Unit</th>
       <th>Status</th>
       <th colspan="3"></th>
     </tr>
@@ -23,13 +23,15 @@
         <td><%= cashadvance.bus_unit %></td>
         <td><%= cashadvance.status %></td>
         <td><%= link_to 'Show', cashadvance %></td>
-        <td><%= link_to 'Edit', edit_cashadvance_path(cashadvance) %></td>
-        <td><%= link_to 'Destroy', cashadvance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+		<% if cashadvance.status == "Pending" %>
+			<td><%= link_to 'Edit', edit_cashadvance_path(cashadvance) %></td>
+			<td><%= link_to 'Cancel', cashadvance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
+	</tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Cashadvance', new_cashadvance_path %>
+<%= link_to 'Request a New Cash Advance', new_cashadvance_path %>

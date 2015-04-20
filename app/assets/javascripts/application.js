@@ -14,3 +14,23 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(function() {
+  $("#cashadvance_date_from").datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      onClose: function( selectedDate ) {
+        $( "#cashadvance_date_to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+  $("#cashadvance_date_to").datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      onClose: function( selectedDate ) {
+        $( "#cashadvance_date_from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+});
